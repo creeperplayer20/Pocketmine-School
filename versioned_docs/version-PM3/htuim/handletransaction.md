@@ -8,7 +8,7 @@ of course, we have to add the "use" statement first
 ```PHP
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use muqsit\invmenu\transaction\InvMenuTransactionResult;
-use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 ```
 To handle item transactions happening to and from the menu's inventory, you may specify a Closure handler that gets triggered by 
 InvMenu every time a transaction occurs. You may allow, cancel and do other things within this handler. 
@@ -33,8 +33,8 @@ $menu->setListener(function(InvMenuTransaction $transaction) : InvMenuTransactio
 $menu->setListener(function(InvMenuTransaction $transaction) : InvMenuTransactionResult{
   $itemClicked = $transaction->getItemClicked();
   $player = $transaction->getPlayer();
-  if($itemClicked->getId() === Item::DIAMOND){
-    $player->getInventory()->addItem(Item::get(Item::DIAMOND));
+  if($itemClicked->getId() === VanillaItems::DIAMOND()){
+    $player->getInventory()->addItem(VanillaItems::DIAMOND());
     $player->sendMessage("Yeah, You Got Diamond");
     return $transaction->discard(); //To Cancel The Transaction
   }

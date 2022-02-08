@@ -38,6 +38,7 @@ public function testForm($player){
     });
         
     $form->setTitle("Title of the form"); //This sets the title of the form
+    $form->setContent("Content"); //This adds the content to the form
     $form->addButton("First Button"); //This adds a button
     $form->addButton("Second Button");
     $player->sendForm($form); //This sends it to the player

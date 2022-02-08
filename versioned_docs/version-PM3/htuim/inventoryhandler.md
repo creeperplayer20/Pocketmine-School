@@ -11,7 +11,7 @@ use muqsit\invmenu\InvMenuHandler;
 
 after that you have to add this in onEnable to register InvMenuHandler to handle Inventory
 ```PHP
-public function onEnable(){
+public function onEnable() : void {
     if(!InvMenuHandler::isRegistered()){
         InvMenuHandler::register($this);
     }

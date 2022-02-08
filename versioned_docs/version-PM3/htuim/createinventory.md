@@ -7,7 +7,7 @@ ___
 first, we need to add "use" statement to get the InvMenu and Item we want to use
 ```PHP
 use muqsit\invmenu\InvMenu;
-use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 ```
 Next, we create an Inventory according to its Type (which is available in InvMenu: TYPE_CHEST, TYPE_DOUBLE_CHEST, TYPE_HOPPER)
 ```PHP
@@ -23,12 +23,12 @@ Pocketmine Inventory class, so you can use all the methods in the Pocketmine Inv
 $inv = $menu->getInventory();
 
 $inv->setContents([
-    6 => Item::get(Item::IRON_BARS),
-    12 => Item::get(Item::END_ROD)
+    6 => VanillaItems::IRON_BARS(),
+    12 => VanillaItems::END_ROD()
 ]);
-$inv->setItem(3, Item::get(Item::CHEST_MINECART));
-$inv->addItem(Item::get(Item::HOPPER_MINECART));
-$inv->removeItem(Item::get(Item::VINES));
+$menu->getInventory()->setItem(3, VanillaItems::CHEST_MINECRAFT());
+$menu->getInventory()->addItem(VanillaItems::HOPPER_MINECRAFT());
+$menu->getInventory()->removeItem(VanillaItems::VINES());
 ```
 To Send the Inventory to the player, you can use this:
 ```PHP
@@ -36,5 +36,5 @@ $menu->send($player); //$player is the player that Inventory wants to send, and 
 ```
 You can also make it readonly (cannot be changed or moved items in your inventory)
 ```PHP
-$menu->readonly();
+$menu->setListener(InvMenu::readonly());
 ```
